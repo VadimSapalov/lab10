@@ -175,29 +175,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return date.toLocaleString();
     }
 
-    // Sample data with random dates
-    const sampleData = [
-        { status: 'Success', user: 'Jane Smith', date: getRandomDate() },
-        { status: 'Failure', user: 'Steve Hong', date: getRandomDate() },
-        { status: 'Canceled', user: 'Alex Wales', date: getRandomDate() },
-        { status: 'Success', user: 'Jane Smith', date: getRandomDate() },
-        { status: 'Success', user: 'Steve Hong', date: getRandomDate() },
-        { status: 'Failure', user: 'Alex Wales', date: getRandomDate() },
-        { status: 'Canceled', user: 'Jane Smith', date: getRandomDate() },
-        { status: 'Success', user: 'Steve Hong', date: getRandomDate() },
-        { status: 'Failure', user: 'Alex Wales', date: getRandomDate() },
-        { status: 'Success', user: 'Jane Smith', date: getRandomDate() },
-        { status: 'Success', user: 'Lin Yan', date: getRandomDate() },
-        { status: 'Failure', user: 'Lin Yan', date: getRandomDate() },
-        { status: 'Canceled', user: 'Lin Yan', date: getRandomDate() },
-        { status: 'Success', user: 'Jane Smith', date: getRandomDate() },
-        { status: 'Failure', user: 'Steve Hong', date: getRandomDate() },
-        { status: 'Success', user: 'Alex Wales', date: getRandomDate() },
-        { status: 'Canceled', user: 'Lin Yan', date: getRandomDate() },
-        { status: 'Success', user: 'Steve Hong', date: getRandomDate() },
-        { status: 'Failure', user: 'Jane Smith', date: getRandomDate() },
-        { status: 'Success', user: 'Alex Wales', date: getRandomDate() }
-    ];
+    // Function to get random status
+    function getRandomStatus() {
+        const statuses = ['Success', 'Failure', 'Canceled'];
+        return statuses[Math.floor(Math.random() * statuses.length)];
+    }
+
+    // Sample data with random dates and statuses
+    const sampleData = Array.from({ length: 20 }, () => ({
+        status: getRandomStatus(),
+        user: users[Math.floor(Math.random() * users.length)],
+        date: getRandomDate()
+    }));
 
     // Function to sort rows
     function sortRows(column, direction) {
